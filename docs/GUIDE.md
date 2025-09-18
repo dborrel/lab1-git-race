@@ -1,7 +1,7 @@
 ---
 title: "Web Engineering 2025-2026"
 subtitle: "Lab 1: Git Race"   
-date: "2025-01-10"
+date: "2025-09-11"
 format:
   html:
     toc: true
@@ -70,7 +70,7 @@ For this assignment, we'll be using the following technologies:
 1. **Programming Language**: We're using [Kotlin 2.2.10](https://kotlinlang.org/), a versatile, open-source language that's popular for Android development and server-side applications.
 2. **Build System**: The project is built using [Gradle 9.0.0](https://gradle.org/), a powerful tool that automates the building process, including compiling, linking, and packaging your code.
 3. **Framework**: The application is based on [Spring Boot 3.5.3](https://docs.spring.io/spring-boot/), a framework that simplifies the development of production-grade applications. It requires Java 17 and is compatible with Java up to version 21.
-4. **Java Version**: The project uses **Java 21 LTS** for optimal performance and modern language features.
+4. **Java Version**: The project uses **Java 21 LTS** for optimal performance and modern language features (can be downgraded to Java 17).
 5. **Frontend**: The application features a modern responsive UI built with **Bootstrap 5.3.3** and **Thymeleaf** templating.
 6. **Containerization**: Full **Docker** support with multi-stage builds for production deployment.
 
@@ -89,20 +89,16 @@ For this assignment, we'll be using the following technologies:
 
 4. **Authenticate with GitHub**: Authenticate via HTTPS (recommended) or SSH. You can follow the [GitHub guide](https://docs.github.com/en/get-started/quickstart/set-up-git) for detailed instructions.
 
-### Get Access to the Repository
-
-You must use the invitation URL published in Moodle.
-
 ### Clone and Run the Application
 
 1. **Clone the Repository**: Use the following commands to clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-github-username/lab1-git-race-your-github-username
+   git clone https://github.com/UNIZAR-30246-WebEngineering/lab1-git-race.git
    cd lab1-git-race-your-github-username
    ```
 
-2. **Test the Repository**: Navigate to the `lab1-git-race-your-github-username` folder in your terminal and run:
+2. **Test the Repository**: Navigate to the `lab1-git-race` folder in your terminal and run:
 
    ```bash
    ./gradlew check
@@ -396,7 +392,7 @@ git push origin feature/your-feature-name
 5. **Incomplete AI Disclosure**: Failing to properly document AI assistance used
 
 ### Getting Help
-- Use the **Feedback Pull Request** for questions and discussions with your instructor
+- Use the Moodle Q&A forum for questions and discussions with your instructor
 - Check the Spring Boot and Kotlin documentation for technical questions
 - Review the existing test files to understand testing patterns
 - Use the interactive HTTP debugging tools in the web interface to test your API endpoints
@@ -419,7 +415,7 @@ You must submit your work in **two ways**:
 Create a zip file containing your complete project and upload it to Moodle. The zip file should include:
 
 - All source code files
-- Documentation files (README.md, description.md, REPORT.md)
+- Documentation files (README.md, REPORT.md)
 - Test files
 - Configuration files
 - Any additional files you've created
