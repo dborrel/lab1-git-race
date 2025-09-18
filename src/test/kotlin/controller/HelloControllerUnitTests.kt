@@ -30,7 +30,8 @@ class HelloControllerUnitTests {
         val view = controller.welcome(model, "Developer")
         
         assertThat(view).isEqualTo("welcome")
-        assertThat(model.getAttribute("message")).isEqualTo("Hello, Developer!")
+        val message = model.getAttribute("message") as String
+        assertThat(message).matches("Good (Morning|Afternoon|Evening), Developer!")
         assertThat(model.getAttribute("name")).isEqualTo("Developer")
     }
     
@@ -41,7 +42,7 @@ class HelloControllerUnitTests {
         
         assertThat(response).containsKey("message")
         assertThat(response).containsKey("timestamp")
-        assertThat(response["message"]).isEqualTo("Hello, Test!")
+        assertThat(response["message"]).matches("Good (Morning|Afternoon|Evening), Test!")
         assertThat(response["timestamp"]).isNotNull()
     }
 }

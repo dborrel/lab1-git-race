@@ -13,6 +13,7 @@ A modern Spring Boot application built with Kotlin, featuring a responsive web i
 - **Containerization**: Docker support with multi-stage builds
 - **Comprehensive Testing**: Unit, integration, and MVC tests
 - **Modern Kotlin**: Constructor injection, data classes, and modern syntax
+- **Time-based Greeting**: Personalized greeting changes depending on the time of day (Good Morning, Good Afternoon, Good Evening)
 
 ## 🛠️ Technology Stack
 
@@ -91,11 +92,11 @@ Run specific test classes:
 
 ### Web Endpoints
 - `GET /` - Main web page with interactive HTTP debugging tools
-- `GET /?name={name}` - Personalized greeting page
+- `GET /?name={name}` - Personalized greeting page (greeting changes based on time of day)
 
 ### REST API Endpoints
 - `GET /api/hello` - Returns JSON greeting with timestamp
-- `GET /api/hello?name={name}` - Returns personalized JSON greeting
+- `GET /api/hello?name={name}` - Returns personalized JSON greeting (time-based: morning, afternoon, evening)
 
 ### Monitoring Endpoints
 - `GET /actuator/health` - Application health status
