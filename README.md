@@ -14,6 +14,7 @@ A modern Spring Boot application built with Kotlin, featuring a responsive web i
 - **Comprehensive Testing**: Unit, integration, and MVC tests
 - **Modern Kotlin**: Constructor injection, data classes, and modern syntax
 - **Time-based Greeting**: Personalized greeting changes depending on the time of day (Good Morning, Good Afternoon, Good Evening)
+- **Structured Logging**: Enhanced logging with structured (JSON) logs for better analysis and aggregation
 
 ## 🛠️ Technology Stack
 
@@ -24,6 +25,7 @@ A modern Spring Boot application built with Kotlin, featuring a responsive web i
 - **Build Tool**: Gradle 9.0.0
 - **Testing**: JUnit 5, AssertJ, MockMvc
 - **Containerization**: Docker
+- **Logging**: Logback, Logstash Logback Encoder (JSON logs), SLF4J
 
 ## 📋 Prerequisites
 
@@ -119,6 +121,7 @@ src/
 │   │   │   └── HelloController.kt      # Web and API controllers
 │   │   └── HelloWorld.kt               # Main application class
 │   └── resources/
+│       ├── logback-spring.xml 
 │       ├── application.properties      # Application configuration
 │       ├── templates/
 │       │   └── welcome.html           # Thymeleaf template
@@ -129,7 +132,8 @@ src/
     └── kotlin/
         ├── controller/
         │   ├── HelloControllerUnitTests.kt    # Unit tests
-        │   └── HelloControllerMVCTests.kt     # MVC tests
+        │   ├── HelloControllerMVCTests.kt     # MVC tests
+        │   └── HelloControllerLogTests.kt     # Log tests
         └── IntegrationTest.kt                 # Integration tests
 ```
 
@@ -183,6 +187,7 @@ The application includes Spring Boot Actuator for monitoring:
 - **Health**: Application and dependency health status
 - **Info**: Application metadata and build information
 - **Metrics**: JVM and application metrics
+- **Structured Logging**: All controller actions are logged in structured JSON format using Logback and Logstash Logback Encoder.
 
 ## 🤝 Contributing
 
@@ -209,3 +214,11 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - ✅ Fixed Bootstrap version inconsistencies
 - ✅ Enhanced error handling and validation
 - ✅ Added interactive features and API endpoints
+
+## 📈 Log Aggregation & Visualization
+
+Structured logs are written to `logs/app-log.json` in JSON format. 
+You can aggregate and visualize these logs using:
+
+- **ELK Stack**: Configure Logstash to read the log file and send data to Elasticsearch, then visualize in Kibana.
+- **Grafana Loki**: Use Promtail to scrape the log file and view logs in Grafana dashboards.
