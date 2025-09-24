@@ -28,6 +28,7 @@ dependencies {
     implementation(libs.jackson.module.kotlin)
     testImplementation(libs.spring.boot.starter.test)
     implementation ("net.logstash.logback:logstash-logback-encoder:7.4")
+    implementation("org.springframework.boot:spring-boot-starter-cache")
 }
 
 tasks.withType<Test> {

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import java.time.LocalTime
 import org.slf4j.LoggerFactory
+import org.springframework.cache.annotation.Cacheable
 
 /**
  * Returns a time-based greeting depending on the current hour.
@@ -62,6 +63,7 @@ class HelloApiController {
 
     private val logger = LoggerFactory.getLogger(HelloApiController::class.java)
 
+    @Cacheable("greetings")
     @GetMapping("/api/hello", produces = [MediaType.APPLICATION_JSON_VALUE])
     fun helloApi(@RequestParam(defaultValue = "World") name: String): Map<String, String> {
         val greeting = "${getTimeBasedGreeting()}, $name!"
