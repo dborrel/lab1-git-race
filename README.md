@@ -15,6 +15,7 @@ A modern Spring Boot application built with Kotlin, featuring a responsive web i
 - **Modern Kotlin**: Constructor injection, data classes, and modern syntax
 - **Time-based Greeting**: Personalized greeting changes depending on the time of day (Good Morning, Good Afternoon, Good Evening)
 - **Structured Logging**: Enhanced logging with structured (JSON) logs for better analysis and aggregation
+- **API Caching**: Frequently accessed API responses are cached for improved performance
 
 ## 🛠️ Technology Stack
 
@@ -88,6 +89,7 @@ Run specific test classes:
 ```bash
 ./gradlew test --tests "HelloControllerUnitTests"
 ./gradlew test --tests "IntegrationTest"
+./gradlew test --tests "HelloControllerCacheTest"
 ```
 
 ## 📡 API Endpoints
@@ -99,6 +101,7 @@ Run specific test classes:
 ### REST API Endpoints
 - `GET /api/hello` - Returns JSON greeting with timestamp
 - `GET /api/hello?name={name}` - Returns personalized JSON greeting (time-based: morning, afternoon, evening)
+ _Note: Responses are cached per name parameter for faster repeated access._
 
 ### Monitoring Endpoints
 - `GET /actuator/health` - Application health status
@@ -133,6 +136,7 @@ src/
         ├── controller/
         │   ├── HelloControllerUnitTests.kt    # Unit tests
         │   ├── HelloControllerMVCTests.kt     # MVC tests
+        │   ├── HelloControllerCacheTest.kt    # Cache tests
         │   └── HelloControllerLogTests.kt     # Log tests
         └── IntegrationTest.kt                 # Integration tests
 ```
@@ -222,3 +226,12 @@ You can aggregate and visualize these logs using:
 
 - **ELK Stack**: Configure Logstash to read the log file and send data to Elasticsearch, then visualize in Kibana.
 - **Grafana Loki**: Use Promtail to scrape the log file and view logs in Grafana dashboards.
+
+## ⚡ Caching
+
+The application uses Spring Boot's caching abstraction to improve performance for frequently accessed data.
+
+- **API Caching**: The `/api/hello` endpoint is cached using the `@Cacheable` annotation. 
+When the same name parameter is requested multiple times, the response is served from the cache instead of being recomputed.
+- **Cache Provider**: By default, the application uses an in-memory cache (`ConcurrentMapCache`). It's possible to 
+configure other providers (like Redis) if you want to manage large amounts of data.
